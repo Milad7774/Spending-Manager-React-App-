@@ -4,7 +4,7 @@ A clean, responsive expense tracking application built with React. Keep track of
 
 ##  Live Demo
 
-[View Live Demo](https://your-username.github.io/purchase-tracker)
+[View Live Demo](https://milad7774.github.io/Spending-Manager-React-App-/View)
 
 ## Features
 

@@ -1,5 +1,5 @@
 import NavBar from "./components/NavBar";
-import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
+import { HashRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import Create from "./components/Create";
 import View from "./components/View";
 import { Toaster } from 'react-hot-toast';
@@ -7,7 +7,7 @@ import { Toaster } from 'react-hot-toast';
 const App = () => {
 
   return(
-    <Router basename="/Spending-Manager-React-App-">
+    <Router >
     <div>
     <Toaster position="top-right" reverseOrder={false} />
       <div>
