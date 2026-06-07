@@ -29,5 +29,3 @@ A clean, responsive expense tracking application built with React. Keep track of
 - **React Hot Toast** - Toast notifications
 - **CSS3** - Styling with Flexbox/Grid
 - **LocalStorage API** - Data persistence
-
-## Project Structure
