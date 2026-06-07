@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import NavBar from "./components/NavBar";
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
+import Create from "./components/Create";
+import View from "./components/View";
+import { Toaster } from 'react-hot-toast';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+const App = () => {
+
+  return(
+    <Router basename="/Spending-Manager-React-App-">
+    <div>
+    <Toaster position="top-right" reverseOrder={false} />
+      <div>
+      <NavBar/>
+      </div>
+      <Routes>
+        <Route path="/" element = {<Navigate to='/Create' replace/>}/>
+        <Route path="/View" element = { <View/> }/>
+        <Route path="/Create" element = { <Create/> }/>
+      </Routes>
     </div>
-  );
+    </Router>
+  )
 }
-
 export default App;

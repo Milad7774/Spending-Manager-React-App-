@@ -1,0 +1,70 @@
+import { useState } from "react";
+import toast from 'react-hot-toast';
+
+const Create = () =>{
+    const [list, setList] = useState(() => 
+    JSON.parse(localStorage.getItem('mylist') || '[]')
+    );
+
+    const success = () => toast.success('Operation completed successfully!');
+
+    const failed = () => toast.error('All fields must be filled!');
+
+    const Nan = () => toast.error("Price is not a number");
+
+    const [today, setToday] = useState(new Date().toLocaleDateString('en-CA'));
+
+    //input Data
+    const [bought, setBought] = useState('');
+
+    const [price, setPrice] = useState();
+
+    function handleData(e){
+        e.preventDefault();
+        if(bought === "" || price === ""){
+            failed();
+            return;
+        }
+        else{
+            const noCommas = price.replace(/\D/g, '');
+            const purchase = {
+                bought: bought,
+                money: noCommas,
+                date: today
+            }
+            setList([...list, purchase]);
+            localStorage.setItem('mylist', JSON.stringify([...list, purchase]));
+            setBought('');
+            setPrice('');
+            success();
+        }
+    }
+
+    const formatPrice = (price) => {
+        const numbers = price.replace(/\D/g, '');
+    
+        return Number(numbers).toLocaleString();
+    };
+
+    return(
+        <div className="div-form">
+            <form onSubmit={handleData} className="form">
+                <h1>Add New Purchase</h1>
+                <div>
+                <label htmlFor = "Spent-ON" >Bought:</label>
+                <input type = "text" name = "Spent-on" id = "Spent-ON" value={bought} onChange={(e) => setBought(e.target.value)}/>
+                </div>
+                <div>
+                    <label htmlFor = "Money"> Price: </label>
+                    <input type = "text" name = "money" id = "Money" value={price} onChange={(e) => setPrice(formatPrice(e.target.value))} />
+                </div>
+                <div>
+                    <label htmlFor = "Date"> Date: </label>
+                    <input type="date" value={today}  onChange={(e) => setToday(e.target.value)}/>
+                </div>
+                <button type="submit"> Add </button>
+            </form>
+        </div>
+    )
+}
+export default Create;
