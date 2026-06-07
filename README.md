@@ -1,4 +1,4 @@
-#  Purchase Tracker - React Expense Manager
+#  Spending Manager - React Expense Manager
 
 A clean, responsive expense tracking application built with React. Keep track of your purchases, organize them by date, and see your total spending at a glance. Perfect for personal budgeting.
 
