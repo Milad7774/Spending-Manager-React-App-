@@ -1,5 +1,5 @@
 import NavBar from "./components/NavBar";
-import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import Create from "./components/Create";
 import View from "./components/View";
 import { Toaster } from 'react-hot-toast';
