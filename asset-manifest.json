@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/Spending-Manager-React-App-/static/css/main.239d877a.css",
-    "main.js": "/Spending-Manager-React-App-/static/js/main.a045a2ce.js",
+    "main.js": "/Spending-Manager-React-App-/static/js/main.5c8cc2fb.js",
     "static/js/453.27870978.chunk.js": "/Spending-Manager-React-App-/static/js/453.27870978.chunk.js",
     "index.html": "/Spending-Manager-React-App-/index.html",
     "main.239d877a.css.map": "/Spending-Manager-React-App-/static/css/main.239d877a.css.map",
-    "main.a045a2ce.js.map": "/Spending-Manager-React-App-/static/js/main.a045a2ce.js.map",
+    "main.5c8cc2fb.js.map": "/Spending-Manager-React-App-/static/js/main.5c8cc2fb.js.map",
     "453.27870978.chunk.js.map": "/Spending-Manager-React-App-/static/js/453.27870978.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.239d877a.css",
-    "static/js/main.a045a2ce.js"
+    "static/js/main.5c8cc2fb.js"
   ]
 }
