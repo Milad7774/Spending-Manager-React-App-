@@ -1,14 +1,17 @@
 const Purchase = ({list, onDelete}) =>{
 
-    fetch('https://liranews.info/api/public/v1/price/usdsypd')
-    .then(response => response.json())
-    .then(data => console.log(data));
-
     const sortedList = list.sort((a, b) => new Date(b.date) - new Date(a.date))
+    console.log(sortedList)
 
-    let total = 0;
+    let totalUSD = 0;
+    let totalSYP = 0;
     sortedList.map((item) =>{
-        total += Number(item.money);
+        if(item.currency == 'USD'){
+            totalUSD += Number(item.money);
+        }
+        else{
+            totalSYP += Number(item.money);
+        }
     })
     const formatPrice = (price) => {
         let formatted = '';
@@ -32,7 +35,7 @@ console.log(sortedList)
 
             <div className="total">
                 <div className="total-text" >Total is:</div>
-                <div className="total-number" >{ formatPrice(total.toString())} </div>
+                <div className="total-number" >{ formatPrice(totalUSD.toString())} USD / {formatPrice(totalSYP.toString())} SYP </div>
                 </div>
 
         </div>
