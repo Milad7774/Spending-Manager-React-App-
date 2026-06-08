@@ -17,7 +17,7 @@ const Create = () =>{
     //input Data
     const [bought, setBought] = useState('');
 
-    const [price, setPrice] = useState();
+    const [price, setPrice] = useState('');
     //Handle Data
     function handleData(e){
         e.preventDefault();
