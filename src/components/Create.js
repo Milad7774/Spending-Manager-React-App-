@@ -10,7 +10,7 @@ const Create = () =>{
 
     const failed = () => toast.error('All fields must be filled!');
 
-    const Nan = () => toast.error("Price is not a number");
+    const [currency, setCurrency] = useState(() => JSON.parse(localStorage.getItem('currency')) || 'USD');
 
     const [today, setToday] = useState(new Date().toLocaleDateString('en-CA'));
 
@@ -18,7 +18,7 @@ const Create = () =>{
     const [bought, setBought] = useState('');
 
     const [price, setPrice] = useState();
-
+    //Handle Data
     function handleData(e){
         e.preventDefault();
         if(bought === "" || price === ""){
@@ -30,7 +30,8 @@ const Create = () =>{
             const purchase = {
                 bought: bought,
                 money: noCommas,
-                date: today
+                date: today,
+                currency: currency
             }
             setList([...list, purchase]);
             localStorage.setItem('mylist', JSON.stringify([...list, purchase]));
@@ -38,6 +39,12 @@ const Create = () =>{
             setPrice('');
             success();
         }
+    }
+    //Change currency
+    function Change(currency){
+        console.log(currency)
+        currency == 'USD' ? localStorage.setItem('currency', JSON.stringify('SYP')) : localStorage.setItem('currency', JSON.stringify('USD'));
+        setCurrency(JSON.parse(localStorage.getItem('currency')));
     }
 
     const formatPrice = (price) => {
@@ -50,6 +57,7 @@ const Create = () =>{
         <div className="div-form">
             <form onSubmit={handleData} className="form">
                 <h1>Add New Purchase</h1>
+                <span className="currency" onClick={() => Change(currency)} >{currency}</span>
                 <div>
                 <label htmlFor = "Spent-ON" >Bought:</label>
                 <input type = "text" name = "Spent-on" id = "Spent-ON" value={bought} onChange={(e) => setBought(e.target.value)}/>
