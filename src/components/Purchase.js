@@ -36,6 +36,7 @@ console.log(sortedList)
             <div className="total">
                 <div className="total-text" >Total is:</div>
                 <div className="total-number" >{ formatPrice(totalUSD.toString())} USD / {formatPrice(totalSYP.toString())} SYP </div>
+                <div className="total-number"> API Currency Converter (Soon!) </div>
                 </div>
 
         </div>
