@@ -38,7 +38,7 @@ const Purchase = ({list, onDelete}) =>{
         //convert to string
         dicimal = dicimal + ""
         //Get First two digits only
-        let number  = dicimal[2] + dicimal[3];
+        let number  = (dicimal[2] || "0") + (dicimal[3] || "0");
 
         console.log(primary,'Primary')
         console.log(dicimal,'dicimal')
