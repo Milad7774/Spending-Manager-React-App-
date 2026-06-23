@@ -1,3 +1,5 @@
+import { replace } from "react-router-dom";
+
 const Purchase = ({list, onDelete}) =>{
 
     let rate = 14200;
@@ -24,14 +26,31 @@ const Purchase = ({list, onDelete}) =>{
                 formatted += ',';
             }
         }
+        formatted = formatted.replace(/[^\d,]/g, '')
         return formatted;
     };
-console.log(sortedList)
+    function fixedUSD(num){
+        console.log(num, "entered")
+        //primary numbers
+        let primary = Math.floor(num);
+        //dicimal
+        let dicimal = primary > 0 ? num % primary : (num + 1) % (primary + 1);
+        //convert to string
+        dicimal = dicimal + ""
+        //Get First two digits only
+        let number  = dicimal[2] + dicimal[3];
+
+        console.log(primary,'Primary')
+        console.log(dicimal,'dicimal')
+        console.log(number, "number")
+        let result = (primary + '') + '.' + (number)
+        return result;
+    }
     return(
         <div>
             <div className="div-table">
                 <table className="table"><thead><tr><th>Item</th><th>Price</th><th>Date</th><th>Action</th></tr></thead><tbody>
-                {sortedList.map((item, index) =>(<tr key={index}><td>{item.bought}</td><td>{formatPrice(item.money)} {item.currency}</td><td>{item.date}</td><td><span onClick={() => onDelete(index)}>&#x274C;</span></td></tr>))}
+                {sortedList.map((item, index) =>(<tr key={index}><td>{item.bought}</td><td>{item.currency === 'USD'? item.money : formatPrice(item.money)} {item.currency}</td><td>{item.date}</td><td><span onClick={() => onDelete(index)}>&#x274C;</span></td></tr>))}
                 </tbody>
                 </table>
             </div>
@@ -39,10 +58,12 @@ console.log(sortedList)
             <div className="total">
                 <div style={{marginTop: '10px'}}>
                 <span className="total-text">Spent:</span>
-                <span className="total-number" >{ formatPrice(totalUSD.toString())} USD / {formatPrice(totalSYP.toString())} SYP </span>
+                <span className="total-number" >{ totalUSD} USD / {formatPrice(totalSYP.toString())} SYP </span>
                 </div>
-                <div className="total-text" >Total is:</div>
-                <div className="total-number"> {(totalUSD + (totalSYP/rate))} USD / {formatPrice((totalSYP + (totalUSD*rate)).toString())} SYP </div>
+                <div>
+                <span className="total-text" >Total is:</span>
+                <span className="total-number"> {fixedUSD(totalUSD + (totalSYP/rate))} USD / {formatPrice((totalSYP + (totalUSD*rate)).toString())} SYP </span>
+                </div>
                 </div>
 
         </div>

@@ -26,7 +26,7 @@ const Create = () =>{
             return;
         }
         else{
-            const noCommas = price.replace(/\D/g, '');
+            const noCommas = price.replace(/[^\d.]/g, '');
             const purchase = {
                 bought: bought,
                 money: noCommas,
@@ -48,6 +48,9 @@ const Create = () =>{
     }
 
     const formatPrice = (price) => {
+        if(currency === 'USD'){
+            return
+        }
         const numbers = price.replace(/\D/g, '');
     
         return Number(numbers).toLocaleString();
@@ -64,7 +67,7 @@ const Create = () =>{
                 </div>
                 <div>
                     <label htmlFor = "Money"> Price: </label>
-                    <input type = "text" name = "money" id = "Money" value={price} onChange={(e) => setPrice(formatPrice(e.target.value))} />
+                    <input type = "text" name = "money" id = "Money" value={price} onChange={(e) => setPrice(formatPrice(e.target.value) || e.target.value)} />
                 </div>
                 <div>
                     <label htmlFor = "Date"> Date: </label>
