@@ -3,7 +3,7 @@ import Nolist from "./Nolist";
 import Purchase from "./Purchase";
 
 const View = () =>{
-    const [list, SetList] = useState(JSON.parse(localStorage.getItem('mylist') || '[]'));
+    const [list, SetList] = useState(JSON.parse(localStorage.getItem('myspendings') || '[]'));
 
     const [notFound, setNotFound] = useState(list.length === 0);
     console.log(notFound, "After")
@@ -12,7 +12,7 @@ const View = () =>{
         console.log('list before is:', list);
         const newList = list.filter((_, i) => i !== count);
         SetList(newList);
-        localStorage.setItem('mylist', JSON.stringify(newList));
+        localStorage.setItem('myspendings', JSON.stringify(newList));
         if(newList.length == 0){
             SetList([]);
             setNotFound(true);

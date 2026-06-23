@@ -1,5 +1,8 @@
 const Purchase = ({list, onDelete}) =>{
 
+    let rate = 14200;
+    let date = '2026-06-08';
+
     const sortedList = list.sort((a, b) => new Date(b.date) - new Date(a.date))
     console.log(sortedList)
 
@@ -34,9 +37,12 @@ console.log(sortedList)
             </div>
 
             <div className="total">
+                <div style={{marginTop: '10px'}}>
+                <span className="total-text">Spent:</span>
+                <span className="total-number" >{ formatPrice(totalUSD.toString())} USD / {formatPrice(totalSYP.toString())} SYP </span>
+                </div>
                 <div className="total-text" >Total is:</div>
-                <div className="total-number" >{ formatPrice(totalUSD.toString())} USD / {formatPrice(totalSYP.toString())} SYP </div>
-                <div className="total-number"> API Currency Converter (Soon!) </div>
+                <div className="total-number"> {(totalUSD + (totalSYP/rate))} USD / {formatPrice((totalSYP + (totalUSD*rate)).toString())} SYP </div>
                 </div>
 
         </div>

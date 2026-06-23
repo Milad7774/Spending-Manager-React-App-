@@ -3,7 +3,7 @@ import toast from 'react-hot-toast';
 
 const Create = () =>{
     const [list, setList] = useState(() => 
-    JSON.parse(localStorage.getItem('mylist') || '[]')
+    JSON.parse(localStorage.getItem('myspendings') || '[]')
     );
 
     const success = () => toast.success('Operation completed successfully!');
@@ -34,7 +34,7 @@ const Create = () =>{
                 currency: currency
             }
             setList([...list, purchase]);
-            localStorage.setItem('mylist', JSON.stringify([...list, purchase]));
+            localStorage.setItem('myspendings', JSON.stringify([...list, purchase]));
             setBought('');
             setPrice('');
             success();
